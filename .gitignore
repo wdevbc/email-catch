@@ -1,0 +1,32 @@
+# .NET / Visual Studio
+[Bb]in/
+[Oo]bj/
+.vs/
+.vscode/
+
+# Build artifacts
+*.exe
+*.dll
+*.pdb
+*.cache
+*.json
+*.txt
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.log
+
+# Sensitive settings (Credential files should not be committed)
+config.json
+*.pfx
+*.cert
+
+# Except Project/Source files
+!HiworksNotifier/HiworksNotifier.csproj
+!HiworksNotifier/HiworksWatcher.cs
+!HiworksNotifier_v1_Source/HiworksNotifier.csproj
+!HiworksNotifier_v1_Source/HiworksWatcher.cs
+!README.md
+!favicon.ico
+!favicon.svg

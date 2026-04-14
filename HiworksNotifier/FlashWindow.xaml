@@ -1,0 +1,21 @@
+<Window x:Class="HiworksNotifier.FlashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Flash" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent" Topmost="True"
+        ShowInTaskbar="False" Focusable="False" IsHitTestVisible="False"
+        WindowStartupLocation="Manual">
+    
+    <Border BorderBrush="#0078D7" BorderThickness="40" Opacity="0">
+        <Border.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard Completed="Storyboard_Completed">
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                         From="0.8" To="0" Duration="0:0:0.5" RepeatBehavior="3x"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Border.Triggers>
+    </Border>
+</Window>

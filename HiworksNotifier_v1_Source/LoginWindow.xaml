@@ -1,0 +1,97 @@
+<Window x:Class="HiworksNotifier.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hiworks Login" Height="420" Width="340"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent">
+
+    <Border Background="White" CornerRadius="12" BorderBrush="#D0D0D0" BorderThickness="1"
+            MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        
+        <Grid>
+            <!-- Close Button (Top Right) -->
+            <Button Click="ExitBtn_Click" 
+                    HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0"
+                    Width="30" Height="30" Background="Transparent" BorderThickness="0" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <Path Data="M0,0 L10,10 M10,0 L0,10" Stroke="#999" StrokeThickness="1.5" 
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#F2F2F2"/>
+                                <Setter Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/> <!-- Circle hover -->
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Grid Margin="30">
+                <!-- Top Right Links (Adjusted margin to not overlap close button) -->
+                <!-- Moved slightly left or just ensure they don't clash. 
+                     Close button is 30x30 at 10,10. Links are at -10,-10 relative to Margin=30 grid.
+                     Top is 30-10 = 20px from window top. Close button is 10px from top. 
+                     They might clash. Let's move links down or left. 
+                     Actually, let's move links to Top Left or just below close button?
+                     Let's put links at Bottom Center or keep them Top Right but pushed down by Close Button.
+                -->
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,25,-10,0">
+                    <TextBlock FontSize="11" HorizontalAlignment="Right">
+                        <Hyperlink NavigateUri="https://github.com/wdevbc/email-catch" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None" Foreground="#888">
+                            <Run Text="Git"/>
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock FontSize="11" HorizontalAlignment="Right" Margin="0,4,0,0">
+                        <Hyperlink NavigateUri="mailto:wdevbc@gmail.com" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None" Foreground="#888">
+                            <Run Text="Contact"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+
+                <!-- Main Content -->
+                <StackPanel VerticalAlignment="Center" Margin="0,10,0,0">
+                    <!-- Logo / Title -->
+                    <TextBlock Text="Hiworks" FontSize="26" FontWeight="Bold" Foreground="#0078D7" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Notifier" FontSize="16" Foreground="#555" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                    <!-- Email Input -->
+                    <TextBlock Text="Email Address" Foreground="#888" FontSize="12" Margin="0,0,0,4"/>
+                    <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="4" Padding="5">
+                        <TextBox x:Name="EmailBox" BorderThickness="0" FontSize="14" VerticalContentAlignment="Center"/>
+                    </Border>
+
+                    <!-- Password Input -->
+                    <TextBlock Text="Password" Foreground="#888" FontSize="12" Margin="0,15,0,4"/>
+                    <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="4" Padding="5">
+                        <PasswordBox x:Name="PasswordBox" BorderThickness="0" FontSize="14" VerticalContentAlignment="Center"/>
+                    </Border>
+
+                    <!-- Auto Login Checkbox -->
+                    <CheckBox x:Name="AutoLoginCheck" Content="Auto Login" 
+                              Margin="0,15,0,0" Foreground="#666" FontSize="12" IsChecked="True"/>
+
+                    <!-- Login Button -->
+                    <Button x:Name="LoginBtn" Content="Login" Margin="0,20,0,0" Height="40"
+                            Background="#0078D7" Foreground="White" FontSize="14" FontWeight="Bold"
+                            BorderThickness="0" Cursor="Hand" Click="LoginBtn_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <!-- Removed Exit Button -->
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
