@@ -46,4 +46,4 @@ dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=
 배포 파일은 `HiworksNotifier/bin/Release/net10.0-windows/win-x64/publish/` 폴더에 생성됩니다.
 
 ## 라이선스
-이 프로젝트의 저작권은 각 원작 소유자에게 있습니다.
+이 프로젝트의 저작권은 **wdevbc**에게 있습니다.
